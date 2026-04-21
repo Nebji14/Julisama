@@ -12,6 +12,7 @@ const MenuIcon = ({ className }) => (
     strokeWidth={1.5}
     stroke="currentColor"
     className={className}
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -29,6 +30,7 @@ const CloseIcon = ({ className }) => (
     strokeWidth={1.5}
     stroke="currentColor"
     className={className}
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -75,12 +77,16 @@ const Navbar = ({ content, design, global }) => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-700 ${isSolid ? `py-4 ${design?.bgScrolled}` : `py-6 ${design?.bgTransparent}`}`}
+      className={`fixed top-0 w-full z-50 transition-all duration-700 ${isSolid ? `py-3 md:py-4 ${design?.bgScrolled}` : `py-4 md:py-6 ${design?.bgTransparent}`}`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
-        <a href="#hero" className={`z-50 block w-max ${design?.logoText}`}>
+      <div className="max-w-7xl mx-auto px-4 md:px-12 flex items-center justify-between h-14 md:h-16">
+        <a
+          href="#hero"
+          className={`z-50 block w-max ${design?.logoText}`}
+          aria-label="Retour à l'accueil"
+        >
           {global?.logo?.image ? (
-            <div className="relative w-48 md:w-60 h-16 md:h-20 transition-opacity duration-300 hover:opacity-80">
+            <div className="relative w-32 h-10 md:w-56 md:h-16 transition-opacity duration-300 hover:opacity-80">
               <Image
                 src={global.logo.image}
                 alt="Logo Julisama"
@@ -121,6 +127,7 @@ const Navbar = ({ content, design, global }) => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Visiter notre page ${social.name}`}
               >
                 <SocialIcon
                   name={social.name}
@@ -142,11 +149,17 @@ const Navbar = ({ content, design, global }) => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="focus:outline-none transition-transform active:scale-90"
+            aria-expanded={isMobileMenuOpen}
+            aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
           >
             {isMobileMenuOpen ? (
-              <CloseIcon className={`w-8 h-8 ${design?.burgerClass}`} />
+              <CloseIcon
+                className={`w-8 h-8 md:w-8 md:h-8 ${design?.burgerClass}`}
+              />
             ) : (
-              <MenuIcon className={`w-8 h-8 ${design?.burgerClass}`} />
+              <MenuIcon
+                className={`w-8 h-8 md:w-8 md:h-8 ${design?.burgerClass}`}
+              />
             )}
           </button>
         </div>
@@ -155,7 +168,7 @@ const Navbar = ({ content, design, global }) => {
       <div
         className={`md:hidden absolute top-full left-0 w-full transition-all duration-500 ease-in-out overflow-hidden ${design?.mobileMenuBg} ${isMobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <div className="px-6 py-12 flex flex-col space-y-8 text-center">
+        <div className="px-6 py-8 flex flex-col space-y-6 text-center">
           {content.links.map((link) => {
             const sectionId = link.href.substring(1);
             const isActive = activeLink === sectionId;
@@ -179,6 +192,9 @@ const Navbar = ({ content, design, global }) => {
                 key={social.name}
                 href={social.href}
                 onClick={() => setIsMobileMenuOpen(false)}
+                aria-label={`Visiter notre page ${social.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <SocialIcon
                   name={social.name}

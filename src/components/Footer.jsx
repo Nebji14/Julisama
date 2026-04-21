@@ -13,6 +13,7 @@ const Footer = ({ design, content, global }) => {
             <a
               href="#hero"
               className={`flex items-center mb-6 ${design?.logoText}`}
+              aria-label="Retour en haut de page"
             >
               {logo?.image ? (
                 <Image
@@ -83,6 +84,7 @@ const Footer = ({ design, content, global }) => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Visiter notre page ${social.name}`}
               >
                 <SocialIcon
                   name={social.name}
@@ -100,6 +102,7 @@ const Footer = ({ design, content, global }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={design?.signatureHighlight}
+                aria-label="Visiter le site de Stellion Web"
               >
                 STELLION WEB
               </a>
