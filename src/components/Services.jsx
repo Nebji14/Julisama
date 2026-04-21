@@ -79,7 +79,6 @@ const chunkArray = (arr, size) => {
 };
 
 const Services = ({ content, design, global }) => {
-  // Séparation des états pour PC et Mobile
   const [activeDesktopIndices, setActiveDesktopIndices] = useState({});
   const [activeMobileIndex, setActiveMobileIndex] = useState(0);
   const [isDesktop, setIsDesktop] = useState(true);
@@ -87,10 +86,9 @@ const Services = ({ content, design, global }) => {
   const [activeTab, setActiveTab] = useState("particuliers");
   const itemRefs = useRef({});
 
-  // Détection de la taille de l'écran
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
-    handleResize(); // Vérification initiale
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -107,20 +105,18 @@ const Services = ({ content, design, global }) => {
 
   const handleInteraction = (rowIndex, colIndex, globalIndex) => {
     if (isDesktop) {
-      // Logique PC : on met à jour la ligne spécifique
       setActiveDesktopIndices((prev) => ({
         ...prev,
         [rowIndex]: colIndex,
       }));
     } else {
-      // Logique Mobile : on met à jour l'élément global unique
       if (activeMobileIndex === globalIndex) return;
       setActiveMobileIndex(globalIndex);
 
       if (itemRefs.current[globalIndex]) {
         setTimeout(() => {
           const element = itemRefs.current[globalIndex];
-          const offset = 100;
+          const offset = 140;
           const elementPosition =
             element.getBoundingClientRect().top + window.scrollY;
 
@@ -128,14 +124,13 @@ const Services = ({ content, design, global }) => {
             top: elementPosition - offset,
             behavior: "smooth",
           });
-        }, 150);
+        }, 450);
       }
     }
   };
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
-    // Réinitialisation des états
     setActiveMobileIndex(0);
     setActiveDesktopIndices({});
   };
@@ -199,15 +194,14 @@ const Services = ({ content, design, global }) => {
                   const globalIndex = rowIndex * 3 + colIndex;
                   const Icon = Icons[item.icon] || Icons.default;
 
-                  // Calcul de l'état actif (Différent selon PC ou Mobile)
                   let isActive = false;
                   if (isDesktop) {
                     const activeColIndex =
                       activeDesktopIndices[rowIndex] !== undefined
                         ? activeDesktopIndices[rowIndex]
                         : rowIndex % 2 === 0
-                          ? 0 // Premier pour les lignes paires (0, 2...)
-                          : row.length - 1; // Dernier pour les lignes impaires (1, 3...)
+                          ? 0
+                          : row.length - 1;
                     isActive = activeColIndex === colIndex;
                   } else {
                     isActive = activeMobileIndex === globalIndex;
@@ -218,10 +212,9 @@ const Services = ({ content, design, global }) => {
                       key={globalIndex}
                       ref={(el) => (itemRefs.current[globalIndex] = el)}
                       className={`relative overflow-hidden group transition-all duration-800 ease-[cubic-bezier(0.25,1,0.5,1)] 
-                      ${isActive ? "h-[600px] lg:h-full lg:flex-6" : "h-[100px] lg:h-full lg:flex-1"}
+                      ${isActive ? "h-[calc(100svh-180px)] md:h-[550px] lg:h-full lg:flex-6" : "h-[100px] lg:h-full lg:flex-1"}
                       ${isActive ? ` ${global?.imageRadius || "rounded-4xl lg:rounded-[2.5rem]"}` : ` cursor-pointer ${global?.imageRadius || "rounded-3xl lg:rounded-4xl"}`} ${isActive ? design?.panelActive : design?.panelInactive}`}
                       onMouseEnter={() => {
-                        // Activation au survol uniquement sur ordinateur
                         if (isDesktop) {
                           handleInteraction(rowIndex, colIndex, globalIndex);
                         }
@@ -245,7 +238,6 @@ const Services = ({ content, design, global }) => {
                         ></div>
                       </div>
 
-                      {/* État Inactif (fermé) */}
                       <div
                         className={`absolute inset-0 p-5 lg:p-6 flex items-center justify-center pointer-events-none transition-opacity ${isActive ? "opacity-0 duration-200 delay-0" : "opacity-100 duration-700 delay-400"}`}
                       >
@@ -274,9 +266,8 @@ const Services = ({ content, design, global }) => {
                         </span>
                       </div>
 
-                      {/* État Actif (ouvert) */}
                       <div
-                        className={`absolute inset-0 p-6 md:p-10 flex flex-col justify-between z-10 transition-all ease-out ${isActive ? "opacity-100 translate-y-0 duration-800 delay-300" : "opacity-0 translate-y-8 duration-200 delay-0 pointer-events-none"}`}
+                        className={`absolute inset-0 p-5 md:p-10 flex flex-col justify-between z-10 transition-all ease-out ${isActive ? "opacity-100 translate-y-0 duration-800 delay-300" : "opacity-0 translate-y-8 duration-200 delay-0 pointer-events-none"}`}
                       >
                         <div className="flex justify-between items-start">
                           <div
@@ -292,7 +283,7 @@ const Services = ({ content, design, global }) => {
                         </div>
 
                         <div
-                          className={`flex flex-col justify-end mt-auto w-full md:w-[500px] lg:w-[600px] max-w-full p-6 lg:p-8 rounded-2xl border border-white/10 shadow-2xl ${design?.contentBoxBg || "bg-[#303030]/90 backdrop-blur-xl"}`}
+                          className={`flex flex-col justify-end mt-auto w-full md:w-[500px] lg:w-[600px] max-w-full p-5 lg:p-8 rounded-2xl border border-white/10 shadow-2xl ${design?.contentBoxBg || "bg-[#303030]/90 backdrop-blur-xl"}`}
                         >
                           <h3 className={`mb-3 ${design?.titleActive}`}>
                             {item.title}

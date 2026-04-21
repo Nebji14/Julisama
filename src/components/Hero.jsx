@@ -7,7 +7,7 @@ const Hero = ({ content, design, global }) => {
     <section
       id="hero"
       // CORRECTION : h-[100svh] pour le bas de l'écran, pt-32 pour baisser l'image sous la navbar, et p-5 pour un cadre plus élégant sur mobile
-      className={`h-[100svh] p-5 pb-6 md:p-8 flex items-center justify-center overflow-hidden pt-32 md:pt-32 ${design?.bgColor || ""}`}
+      className={`h-svh p-5 pb-6 md:p-8 flex items-center justify-center overflow-hidden pt-32 md:pt-32 ${design?.bgColor || ""}`}
     >
       <div
         className={`relative w-full h-full overflow-hidden p-4 md:p-8 ${global?.imageRadius}`}

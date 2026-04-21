@@ -93,7 +93,8 @@ export default function RootLayout({ children }) {
       </head>
       <body className="antialiased bg-black text-white selection:bg-[#a2623d] selection:text-white">
         <AOSInit />
-        <main>{children}</main>
+        {/* CORRECTION ICI : overflow-x-hidden placé sur le main */}
+        <main className="overflow-x-hidden">{children}</main>
       </body>
     </html>
   );

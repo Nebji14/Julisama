@@ -9,7 +9,7 @@ const Portfolio = ({ content, design, global }) => {
       className={`min-h-screen relative py-32 px-6 ${design?.bgColor || ""}`}
     >
       <div className="max-w-7xl mx-auto relative z-10 pb-16">
-        <div className="text-center" data-aos="fade-in" data-aos-offset="0">
+        <div className="text-center" data-aos="fade-in" data-aos-once="true">
           <span className={`block mb-4 ${design?.subtitle}`}>
             {content.subtitle}
           </span>
@@ -23,13 +23,7 @@ const Portfolio = ({ content, design, global }) => {
                 key={index}
                 className="group cursor-pointer"
                 data-aos="fade-up"
-                data-aos-offset="0"
-                // On supprime le délai sur mobile pour que l'apparition soit immédiate
-                data-aos-delay={
-                  typeof window !== "undefined" && window.innerWidth >= 768
-                    ? "0"
-                    : "0"
-                }
+                data-aos-once="true"
               >
                 <div
                   className={`relative overflow-hidden aspect-4/5 mb-8 ${design?.imageWrapper} ${global?.imageRadius || "rounded-none"}`}
@@ -72,12 +66,7 @@ const Portfolio = ({ content, design, global }) => {
                 key={index}
                 className="group cursor-pointer"
                 data-aos="fade-up"
-                data-aos-offset="0"
-                data-aos-delay={
-                  typeof window !== "undefined" && window.innerWidth >= 768
-                    ? "200"
-                    : "0"
-                }
+                data-aos-once="true"
               >
                 <div
                   className={`relative overflow-hidden aspect-4/5 mb-8 ${design?.imageWrapper} ${global?.imageRadius || "rounded-none"}`}

@@ -2,14 +2,13 @@
 
 html {
   scroll-behavior: smooth;
-  /* EMPÊCHE LE SCROLL HORIZONTAL PARASITE SUR TOUT LE SITE */
-  overflow-x: hidden;
+  /* On ne met surtout pas de overflow ici pour AOS */
 }
 
 body {
-  overflow-x: hidden;
   position: relative;
   width: 100%;
+  /* On ne met pas de overflow ici non plus */
 }
 
 @theme {
