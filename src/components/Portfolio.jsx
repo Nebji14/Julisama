@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { client, urlFor } from "@/sanity/lib/client";
 
 const PortfolioItem = ({ item, index, design, global, openModal }) => {
   const [currentImg, setCurrentImg] = useState(0);
@@ -15,7 +16,7 @@ const PortfolioItem = ({ item, index, design, global, openModal }) => {
     if (isHovered && hasMultiple) {
       interval = setInterval(() => {
         setCurrentImg((prev) => (prev + 1) % images.length);
-      }, 2200);
+      }, 1900);
     }
     return () => clearInterval(interval);
   }, [isHovered, hasMultiple, images.length]);
@@ -43,7 +44,7 @@ const PortfolioItem = ({ item, index, design, global, openModal }) => {
       onClick={() => openModal(item, currentImg)}
     >
       <div
-        className={`relative overflow-hidden aspect-[4/3] md:aspect-[16/10] mb-6 md:mb-8 ${design?.imageWrapper} ${global?.imageRadius || "rounded-none"}`}
+        className={`relative overflow-hidden aspect-4/3 md:aspect-16/10 mb-6 md:mb-8 ${design?.imageWrapper} ${global?.imageRadius || "rounded-none"}`}
       >
         {images.length > 0 ? (
           images.map((img, idx) => (
@@ -118,7 +119,7 @@ const PortfolioItem = ({ item, index, design, global, openModal }) => {
           </div>
         )}
 
-        <div className="hidden md:flex absolute inset-x-0 bottom-0 pt-32 pb-6 px-8 z-20 flex-col justify-end bg-gradient-to-t from-[#111111] via-[#111111]/80 to-transparent transition-opacity duration-700 opacity-0 group-hover:opacity-100 pointer-events-none">
+        <div className="hidden md:flex absolute inset-x-0 bottom-0 pt-32 pb-6 px-8 z-20 flex-col justify-end bg-linear-to-t from-[#111111] via-[#111111]/80 to-transparent transition-opacity duration-700 opacity-0 group-hover:opacity-100 pointer-events-none">
           <p className="font-sans text-[#faf7f3] font-medium text-sm leading-relaxed drop-shadow-md">
             {item.description}
           </p>
@@ -153,13 +154,52 @@ const PortfolioItem = ({ item, index, design, global, openModal }) => {
 };
 
 const Portfolio = ({ content, design, global }) => {
+  const [sanityData, setSanityData] = useState([]);
   const [modalData, setModalData] = useState({
     isOpen: false,
     item: null,
     imgIndex: 0,
   });
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await client.fetch(
+          '*[_type == "portfolio"]',
+          {},
+          { cache: "no-store" },
+        );
+        setSanityData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   if (!content) return null;
+
+  const getDisplayItems = () => {
+    return content.items.map((item, index) => {
+      const sanityId = `portfolio-${index + 1}`;
+      const sanityItem = sanityData.find((d) => d._id === sanityId);
+
+      if (!sanityItem) return item;
+
+      const sanityImages =
+        sanityItem.images?.map((img) => urlFor(img).url()) || [];
+
+      return {
+        title: sanityItem.title || item.title,
+        category: sanityItem.category || item.category,
+        description: sanityItem.description || item.description,
+        images:
+          sanityImages.length > 0 ? sanityImages : item.images || [item.image],
+      };
+    });
+  };
+
+  const displayItems = getDisplayItems();
 
   const openModal = (item, startIndex) => {
     setModalData({ isOpen: true, item, imgIndex: startIndex });
@@ -213,7 +253,7 @@ const Portfolio = ({ content, design, global }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-12 lg:gap-24 px-0 md:px-8 mt-12 md:mt-24">
             <div className="flex flex-col gap-16 md:gap-24 lg:gap-32">
-              {content.items.slice(0, 2).map((item, index) => (
+              {displayItems.slice(0, 2).map((item, index) => (
                 <PortfolioItem
                   key={`left-${index}`}
                   item={item}
@@ -226,7 +266,7 @@ const Portfolio = ({ content, design, global }) => {
             </div>
 
             <div className="flex flex-col gap-16 md:gap-24 lg:gap-32 md:pt-48">
-              {content.items.slice(2, 4).map((item, index) => (
+              {displayItems.slice(2, 4).map((item, index) => (
                 <PortfolioItem
                   key={`right-${index}`}
                   item={item}
@@ -243,7 +283,7 @@ const Portfolio = ({ content, design, global }) => {
 
       {modalData.isOpen && modalData.item && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#111111]/95 backdrop-blur-md"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-[#111111]/95 backdrop-blur-md"
           onClick={closeModal}
         >
           <button

@@ -197,12 +197,11 @@ export const siteData = {
       tabPros: "Pour les Professionnels",
       particuliersItems: [
         {
-          icon: "hands",
+          icon: "lightbulb",
           title: "SOS Déco",
           details:
             "Une réponse claire et rapide à une question précise (canapé, couleur, disposition d'un meuble...).",
-          image:
-            "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+          image: "/sosDeco.png",
           detailsList: [
             {
               name: "Ce que ça comprend",
@@ -219,12 +218,11 @@ export const siteData = {
           ],
         },
         {
-          icon: "cube",
+          icon: "ruler",
           title: "Flash Déco",
           details:
             "Une analyse de votre pièce pour identifier son potentiel et savoir par où commencer.",
-          image:
-            "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+          image: "/flashDeco.png",
           detailsList: [
             {
               name: "Ce que ça comprend",
@@ -241,12 +239,11 @@ export const siteData = {
           ],
         },
         {
-          icon: "stone",
+          icon: "book",
           title: "Mini-Book",
           details:
             "Un book digital avec des idées d'ambiance et des pistes déco adaptées à vos envies.",
-          image:
-            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+          image: "/miniBook.png",
           detailsList: [
             {
               name: "Ce que ça comprend",
@@ -264,12 +261,11 @@ export const siteData = {
           ],
         },
         {
-          icon: "hands",
+          icon: "users",
           title: "RDV Coaching",
           details:
             "Un rendez-vous personnalisé (en visio ou présentiel) pour répondre à toutes vos questions et vous guider dans vos choix.",
-          image:
-            "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
+          image: "/coachingDeco.png",
           detailsList: [
             {
               name: "Ce que ça comprend",
@@ -290,8 +286,7 @@ export const siteData = {
           title: "Immersion Déco",
           details:
             "Une projection réaliste de votre futur intérieur pour vous aider à vous projeter et éviter les erreurs.",
-          image:
-            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80",
+          image: "/immersionDeco.png",
           detailsList: [
             {
               name: "Ce que ça comprend",
@@ -309,12 +304,11 @@ export const siteData = {
           ],
         },
         {
-          icon: "stone",
+          icon: "home",
           title: "Maison Révélée",
           details:
             "Un dossier clé en main. L'objectif est de repenser chaque espace pour que la maison redevienne une source de bien-être au quotidien.",
-          image:
-            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+          image: "/maisonRevelee.png",
           detailsList: [
             {
               name: "Ce que ça comprend",
@@ -333,12 +327,11 @@ export const siteData = {
       ],
       prosItems: [
         {
-          icon: "hands",
+          icon: "sparkles",
           title: "Petit Coup de Neuf",
           details:
             "Redonner vie à un espace déjà existant sans tout transformer. Idéal pour moderniser et harmoniser votre activité rapidement.",
-          image:
-            "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+          image: "/petitcoupdeneuf.png",
           detailsList: [
             {
               name: "Ce que ça comprend",
@@ -355,12 +348,11 @@ export const siteData = {
           ],
         },
         {
-          icon: "cube",
+          icon: "building",
           title: "Je m'installe",
           details:
             "Accompagnement complet pour créer un lieu professionnel à votre image, dès l'ouverture.",
-          image:
-            "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=80",
+          image: "/jeMinstalle.png",
           detailsList: [
             {
               name: "Ce que ça comprend",
@@ -377,12 +369,11 @@ export const siteData = {
           ],
         },
         {
-          icon: "stone",
+          icon: "key",
           title: "Investissement Meublé",
           details:
             "Valorisation d'un bien locatif ou touristique (Airbnb, meublé de tourisme, gîte, hôtel).",
-          image:
-            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80",
+          image: "/investissementMeuble.png",
           detailsList: [
             {
               name: "Ce que ça comprend",
@@ -437,31 +428,29 @@ export const siteData = {
           ],
         },
         {
-          title: "Appartement Haussmannien",
-          category: "Agencement & Déco",
+          title: "Suite Sous les Toits",
+          category: "Conception 3D & Optimisation sur plan",
           description:
-            "Mise en valeur des moulures existantes avec une décoration moderne et chaleureuse.",
+            "Aménagement d'une suite parentale avec dressing sur mesure et salle d'eau intégrée. Optimisation des espaces en sous-pente pour garantir une circulation fluide dans une ambiance naturelle et cocooning.",
+          images: ["/realisation_2.jpg", "/realisation_2.1.jpg"],
+        },
+        {
+          title: "Rénovation Salle de Bain & Travertin",
+          category: "Conception technique & Accompagnement complet",
+          description:
+            "Projet de rénovation complète de salle de bain. Résolution des contraintes techniques et création d'un agencement moderne avec meuble vasque semi sur-mesure. Matériaux lumineux alliant l'authenticité du bois et l'élégance du travertin.",
           images: [
-            "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80",
+            "/realisation_3.jpg",
+            "/realisation_3.1.jpg",
+            "/realisation_3.2.jpg",
           ],
         },
         {
-          title: "Cabinet Paramédical",
-          category: "Aménagement Pro",
+          title: "Cuisine Industrielle & Rouge de Terre",
+          category: "Agencement complet & Coaching budgétaire",
           description:
-            "Création d'un espace d'accueil rassurant et de salles de soins fonctionnelles et apaisantes.",
-          images: [
-            "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80",
-          ],
-        },
-        {
-          title: "Investissement Locatif",
-          category: "Optimisation Airbnb",
-          description:
-            "Décoration coup de cœur pour se démarquer sur les plateformes et maximiser la rentabilité.",
-          images: [
-            "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=800&q=80",
-          ],
+            "Agencement sur mesure d'une cuisine atypique au style industriel. Optimisation de l'espace avec vue sur le jardin et gestion stricte du budget. Une décoration de caractère mariant façades noires, plan de travail en bois et mur rouge terracotta.",
+          images: ["/realisation_4.jpg", "/realisation_4.1.jpg"],
         },
       ],
     },

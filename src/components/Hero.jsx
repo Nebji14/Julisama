@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 const Hero = ({ content, design, global }) => {
@@ -6,10 +8,10 @@ const Hero = ({ content, design, global }) => {
   return (
     <section
       id="hero"
-      className={`h-svh p-4 pb-6 md:p-8 flex items-center justify-center overflow-hidden pt-24 md:pt-32 ${design?.bgColor || ""}`}
+      className={`h-svh max-[900px]:landscape:h-auto p-4 pb-6 md:p-8 flex items-center justify-center overflow-hidden pt-24 md:pt-32 ${design?.bgColor || ""}`}
     >
       <div
-        className={`relative w-full h-full overflow-hidden p-4 md:p-8 ${global?.imageRadius}`}
+        className={`relative w-full h-full max-[900px]:landscape:min-h-[480px] overflow-hidden p-4 md:p-8 ${global?.imageRadius}`}
         data-aos="zoom-in"
         data-aos-duration="1500"
       >
