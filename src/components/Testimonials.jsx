@@ -1,6 +1,5 @@
 "use client";
 
-// On crée l'icône Étoile directement en SVG, zéro dépendance requise !
 const StarIcon = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +23,25 @@ const Testimonials = ({ content, design }) => {
       id="testimonials"
       className={`relative py-32 px-6 ${design?.bgColor || "bg-[#faf7f3]"}`}
     >
-      <div className="max-w-7xl mx-auto">
+      {/* Le conteneur div a "overflow-hidden" et "pb-12".
+        Il coupe la ligne droite de l'ombre vers le haut, mais laisse l'ombre vers le bas visible !
+      */}
+      <div className="absolute -top-px left-0 w-full z-20 overflow-hidden pb-12 leading-none">
+        <svg
+          className={`relative block w-[102%] -left-[1%] h-[40px] md:h-[80px] rotate-180 drop-shadow-[0_8px_15px_rgba(0,0,0,0.08)] ${design?.topDivider || "text-[#ffffff]"}`}
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,112.5,187.38,97.71,232.88,85.73,277.53,70.62,321.39,56.44Z"
+            className="fill-current"
+          ></path>
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div
           className="flex flex-col items-center text-center mb-20"
           data-aos="fade-up"
@@ -92,7 +109,7 @@ const Testimonials = ({ content, design }) => {
               href={content.googleLink}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center justify-center transition-colors duration-300 ${design?.btnPrimary || "bg-[#8c5233] text-[#faf7f3] px-10 py-4 text-xs font-bold uppercase tracking-[0.2em] shadow-xl hover:bg-[#303030]"}`}
+              className={`inline-flex items-center justify-center transition-colors duration-300 ${design?.btnPrimary || "bg-[#8c5233] text-[#faf7f3] px-10 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-xl hover:bg-[#303030]"}`}
             >
               {content.btnText || "Voir tous les avis sur Google"}
             </a>

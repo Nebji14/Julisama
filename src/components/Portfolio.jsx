@@ -235,7 +235,7 @@ const Portfolio = ({ content, design, global }) => {
     <>
       <section
         id="portfolio"
-        className={`min-h-screen relative py-32 px-6 ${design?.bgColor || ""}`}
+        className={`min-h-screen relative overflow-hidden py-32 px-6 ${design?.bgColor || ""}`}
       >
         <div className="max-w-[1600px] mx-auto relative z-10 pb-16">
           <div
@@ -362,17 +362,6 @@ const Portfolio = ({ content, design, global }) => {
                   </svg>
                 </button>
               </>
-            )}
-          </div>
-
-          <div className="absolute bottom-6 md:bottom-10 left-0 right-0 text-center pointer-events-none px-4">
-            <h4 className="text-white font-serif text-2xl md:text-3xl font-bold tracking-wide drop-shadow-lg">
-              {modalData.item.title}
-            </h4>
-            {modalData.item.images?.length > 1 && (
-              <p className="text-white/60 font-sans text-xs uppercase tracking-widest mt-3">
-                {modalData.imgIndex + 1} / {modalData.item.images.length}
-              </p>
             )}
           </div>
         </div>

@@ -145,13 +145,13 @@ const Contact = ({ content, design, global }) => {
   return (
     <section
       id="contact"
-      className={`min-h-screen flex items-center relative overflow-hidden py-32 px-6 ${design?.bgColor || ""}`}
+      className={`min-h-screen flex items-center relative py-32 px-6 ${design?.bgColor || ""}`}
     >
       <div
-        className={`absolute top-0 left-0 w-full leading-none z-20 rotate-180 ${design?.topDivider || ""}`}
+        className={`absolute -top-px left-0 w-full leading-none z-20 rotate-180 ${design?.topDivider || "text-[#faf7f3]"}`}
       >
         <svg
-          className="relative block w-full h-[40px] md:h-[80px] drop-shadow-[0_-8px_15px_rgba(0,0,0,0.08)]"
+          className="relative block w-[102%] -left-[1%] h-[40px] md:h-[80px]"
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 120"

@@ -458,6 +458,7 @@ export const siteData = {
   testimonials: {
     design: {
       bgColor: "bg-[#faf7f3]",
+      topDivider: "text-[#ffffff]",
       subtitle:
         "font-sans text-[10px] font-bold uppercase tracking-[0.4em] text-[#a2623d]",
       title:
@@ -504,7 +505,7 @@ export const siteData = {
   contact: {
     design: {
       bgColor: "bg-[#303030]",
-      topDivider: "text-[#ffffff]",
+      topDivider: "text-[#faf7f3]",
       bgImage:
         "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2000&q=80",
       overlay: "bg-[#303030]/95",
@@ -570,7 +571,6 @@ export const siteData = {
       },
     },
   },
-
   footer: {
     design: {
       bgColor: "bg-[#faf7f3]",
