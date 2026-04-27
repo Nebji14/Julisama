@@ -542,9 +542,13 @@ export const siteData = {
         "font-sans font-bold text-xs tracking-widest text-[#303030]/70 uppercase",
       copyrightText:
         "font-sans text-[9px] font-bold tracking-[0.3em] uppercase text-[#303030]/70",
+      photographerText:
+        "font-sans text-[8px] font-bold tracking-widest uppercase text-[#303030]/50",
+      photographerHighlight:
+        "text-[#a2623d] hover:text-[#303030] cursor-pointer",
       socialIconClass: "text-[#303030]/80 hover:text-[#a2623d]",
       signatureText:
-        "font-sans font-bold tracking-widest text-[9px] text-[#303030]/70 uppercase",
+        "font-sans font-bold tracking-widest text-[11px] text-[#303030]/90 uppercase",
       signatureHighlight:
         "font-black text-[#a2623d] hover:text-[#303030] cursor-pointer",
     },
@@ -571,8 +575,12 @@ export const siteData = {
         {
           title: "LÉGAL",
           links: [
-            { title: "Mentions Légales", href: "#" },
-            { title: "Politique de confidentialité", href: "#" },
+            { title: "Mentions Légales", href: "/mentions-legales" },
+            { title: "Conditions Générales de Vente", href: "/cgv" },
+            {
+              title: "Politique de confidentialité",
+              href: "/politique-de-confidentialite",
+            },
           ],
         },
       ],
@@ -584,6 +592,8 @@ export const siteData = {
         },
       ],
       signatureLink: "https://stellionweb.fr/",
+      photographer: "OH LA VIE EST BELLE",
+      photographerLink: "https://www.ohlavieestbelle.com/",
     },
   },
 };

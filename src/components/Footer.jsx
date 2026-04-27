@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import SocialIcon from "./SocialIcon";
 
 const Footer = ({ design, content, global }) => {
@@ -44,15 +45,26 @@ const Footer = ({ design, content, global }) => {
 
                 {col.links && (
                   <div className="flex flex-col gap-4">
-                    {col.links.map((link, lIdx) => (
-                      <a
-                        key={lIdx}
-                        href={link.href}
-                        className={design?.linkClass}
-                      >
-                        {link.title}
-                      </a>
-                    ))}
+                    {col.links.map((link, lIdx) => {
+                      const isInternal = link.href.startsWith("/");
+                      return isInternal ? (
+                        <Link
+                          key={lIdx}
+                          href={link.href}
+                          className={design?.linkClass}
+                        >
+                          {link.title}
+                        </Link>
+                      ) : (
+                        <a
+                          key={lIdx}
+                          href={link.href}
+                          className={design?.linkClass}
+                        >
+                          {link.title}
+                        </a>
+                      );
+                    })}
                   </div>
                 )}
 
@@ -73,9 +85,30 @@ const Footer = ({ design, content, global }) => {
         <div
           className={`flex flex-col md:flex-row justify-between items-center gap-6 pt-8 pb-8 border-t border-stone-200`}
         >
-          <p className={design?.copyrightText}>
-            © {currentYear} {logo?.text || "AGENCE"}. TOUS DROITS RÉSERVÉS.
-          </p>
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <p className={design?.copyrightText}>
+              © {currentYear} {logo?.text || "AGENCE"}. TOUS DROITS RÉSERVÉS.
+            </p>
+            {content?.photographer && (
+              <p className={design?.photographerText}>
+                PHOTOGRAPHIES PAR{" "}
+                {content?.photographerLink ? (
+                  <a
+                    href={content.photographerLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={design?.photographerHighlight}
+                  >
+                    {content.photographer}
+                  </a>
+                ) : (
+                  <span className={design?.photographerHighlight}>
+                    {content.photographer}
+                  </span>
+                )}
+              </p>
+            )}
+          </div>
 
           <div className="flex gap-8">
             {content?.socials?.map((social) => (
