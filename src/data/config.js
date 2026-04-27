@@ -455,6 +455,52 @@ export const siteData = {
     },
   },
 
+  testimonials: {
+    design: {
+      bgColor: "bg-[#faf7f3]",
+      subtitle:
+        "font-sans text-[10px] font-bold uppercase tracking-[0.4em] text-[#a2623d]",
+      title:
+        "font-serif text-4xl md:text-6xl font-black text-[#303030] uppercase leading-[1.1] md:leading-[0.9]",
+      titleHighlight: "text-[#a2623d] font-light italic",
+      cardBg: "bg-white shadow-xl rounded-3xl border border-[#303030]/5",
+      starColor: "text-[#a2623d]",
+      reviewText:
+        "font-sans text-sm font-medium leading-relaxed text-[#303030]/80 italic",
+      avatarBg: "bg-[#42726b]/10 text-[#42726b]",
+      authorName:
+        "font-sans font-bold text-xs tracking-widest uppercase text-[#303030]",
+      authorProject:
+        "font-sans text-[10px] font-bold tracking-[0.2em] uppercase text-[#a2623d]",
+      btnPrimary:
+        "bg-[#8c5233] text-[#faf7f3] px-10 py-4 rounded-full text-xs font-bold uppercase tracking-[0.2em] shadow-xl hover:bg-[#303030] hover:text-[#faf7f3] transition-colors duration-300",
+    },
+    content: {
+      subtitle: "ILS ME FONT CONFIANCE",
+      titleLine1: "CE QUE DISENT",
+      titleLine2: "MES CLIENTS",
+      googleLink: "https://maps.app.goo.gl/Qmfu1bDRpqaAL9wM6",
+      btnText: "DÉCOUVRIR TOUS LES AVIS SUR GOOGLE",
+      reviews: [
+        {
+          author: "Ludivine Urze",
+          project: "Rénovation Salle de Bain",
+          text: "Après 18 ans avec cette salle de bain, nous avions envie de changement, mais n'arrivions pas à nous projeter. C'est là qu'Isabelle est intervenue!! En un rendez vous elle a su analyser les contraintes techniques, écouter nos envies, besoins et a pu nous proposer une implantation et des matériaux qui repondent exactement à ce dont on rêvait!!! Je n'imaginais pas un tel résultat !!!! Allez y les yeux fermés vous serez surpris du potentiel de votre pièce qui sera sublimée par le talent et les compétences d'Isabelle. Encore Merci à toi pour tout ce travail!!",
+        },
+        {
+          author: "Emilie Perren",
+          project: "Décoration Cuisine",
+          text: "Une grande première pour nous de faire appel à une décoratrice d'intérieur ! Elle a su nous conseiller tout en étant à l'écoute de nos envies, ce qui pour nous est important. Faire quelque chose qui nous ressemble et dont on a envie pour se sentir bien chez soi !! Le résultat de notre cuisine est incroyable !!",
+        },
+        {
+          author: "Claudie Lemaitre",
+          project: "Aménagement Studio & 3D",
+          text: "Je tiens à remercier infiniment Isabelle pour son accompagnement précieux. Je venais de traverser une période de vie compliquée, avec une séparation et un changement total de cadre. Je quittais une maison pour m’installer dans un studio, et j’avais beaucoup de mal à me projeter dans ce nouvel espace. J’avais besoin de me sentir bien chez moi, tout en conservant certains de mes meubles et en maîtrisant mon budget. Grâce à ses visuels 3D, Isabelle a su transformer mes doutes en évidence. Elle a parfaitement compris mes besoins et m’a proposé un aménagement à la fois fonctionnel et rassurant, avec un vrai espace nuit, une table pour les repas et suffisamment de rangements, notamment dans la cuisine. Son travail m’a permis de me projeter immédiatement, au point de me décider à signer cette location en toute sérénité. Au-delà de ses compétences, j’ai été touchée par son écoute, sa bienveillance et sa capacité à accompagner avec justesse dans un moment aussi sensible. Encore merci pour tout.",
+        },
+      ],
+    },
+  },
+
   contact: {
     design: {
       bgColor: "bg-[#303030]",

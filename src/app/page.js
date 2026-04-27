@@ -6,6 +6,7 @@ import TrustBar from "@/components/TrustBar";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
+import Testimonials from "@/components/Testimonials"; // <-- AJOUT ICI
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -49,6 +50,12 @@ export default function Home() {
         content={siteData.portfolio.content}
         design={siteData.portfolio.design}
         global={globalSettings}
+      />
+
+      {/* AJOUT DE LA SECTION AVIS ICI */}
+      <Testimonials
+        content={siteData.testimonials.content}
+        design={siteData.testimonials.design}
       />
 
       <Contact
